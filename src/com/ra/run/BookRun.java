@@ -13,44 +13,48 @@ public class BookRun {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         do {
-            System.out.println("*********************************MENU********************************");
-            System.out.println("1. Nhập thông tin sách");
-            System.out.println("2. Hiển thị thông tin sách");
-            System.out.println("3. Cập nhật thông tin sách theo mã sách");
-            System.out.println("4. Xóa sách theo mã sách");
-            System.out.println("5. Sắp xếp sách theo giá bán tăng dần");
-            System.out.println("6. Thống kê sách theo khoảng giá (a-b nhập từ bàn phím)");
-            System.out.println("7. Tìm kiếm sách theo tên tác giả");
-            System.out.println("8. Thoát");
-            System.out.println("Mời lựa chọn (1-8): ");
-            int choice = Integer.parseInt(sc.nextLine());
-            switch (choice){
-                case 1:
-                    addBook(sc);
-                    break;
-                case 2:
-                    displayBook();
-                    break;
-                case 3:
-                    updateBookById(sc);
-                    break;
-                case 4:
-                    deleteBook(sc);
-                    break;
-                case 5:
-                    sortBookByExportPrice();
-                    break;
-                case 6:
-                    searchBookByExportPrice(sc);
-                    break;
-                case 7:
-                    searchBookByAuthor(sc);
-                    break;
-                case 8:
-                    System.exit(0);
-                    break;
-                default:
-                    System.err.println("Lựa chọn không phù hợp");
+            try {
+                System.out.println("*********************************MENU********************************");
+                System.out.println("1. Nhập thông tin sách");
+                System.out.println("2. Hiển thị thông tin sách");
+                System.out.println("3. Cập nhật thông tin sách theo mã sách");
+                System.out.println("4. Xóa sách theo mã sách");
+                System.out.println("5. Sắp xếp sách theo giá bán tăng dần");
+                System.out.println("6. Thống kê sách theo khoảng giá (a-b nhập từ bàn phím)");
+                System.out.println("7. Tìm kiếm sách theo tên tác giả");
+                System.out.println("8. Thoát");
+                System.out.println("Mời lựa chọn (1-8): ");
+                int choice = Integer.parseInt(sc.nextLine());
+                switch (choice){
+                    case 1:
+                        addBook(sc);
+                        break;
+                    case 2:
+                        displayBook();
+                        break;
+                    case 3:
+                        updateBookById(sc);
+                        break;
+                    case 4:
+                        deleteBook(sc);
+                        break;
+                    case 5:
+                        sortBookByExportPrice();
+                        break;
+                    case 6:
+                        searchBookByExportPrice(sc);
+                        break;
+                    case 7:
+                        searchBookByAuthor(sc);
+                        break;
+                    case 8:
+                        System.exit(0);
+                        break;
+                    default:
+                        System.err.println("Lựa chọn không phù hợp");
+                }
+            } catch (NumberFormatException nfe){
+                System.err.println("Kiểu dữ liệu không đúng, chỉ nhập số.");
             }
         } while (true);
 

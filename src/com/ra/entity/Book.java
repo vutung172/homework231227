@@ -2,15 +2,15 @@ package com.ra.entity;
 
 import com.ra.run.BookRun;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import java.util.PrimitiveIterator;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Book implements IBook{
+public class Book implements IBook, Serializable{
     private int bookId;
     private String bookName;
     private float importPrice;
@@ -190,11 +190,14 @@ public class Book implements IBook{
         } while (true);
     }
     public void inputCreated(){
-        Long curentTime = System.currentTimeMillis();
-        SimpleDateFormat simpleDate = new SimpleDateFormat("dd/MM/yyyy");
-        this.created = new Date(curentTime);
-        String created = simpleDate.format(this.created);
-        System.out.println("Ngày khởi tạo là: "+created);
+        long currentTime = System.currentTimeMillis();
+        this.created = new Date(currentTime);
+        String dateCreated = formattedDate("dd/MM/yyyy",this.created);
+        System.out.println("Ngày khởi tạo là: "+dateCreated);
+    }
+    public String formattedDate(String format,Date date){
+        SimpleDateFormat simpleDate = new SimpleDateFormat(format);
+        return simpleDate.format(date);
     }
 
     public void inputDescription(Scanner sc){
@@ -214,21 +217,15 @@ public class Book implements IBook{
     }
 
     @Override
-    public String toString() {
-        return "Book{" +
-                "bookId=" + bookId +
-                ", bookName='" + bookName + '\'' +
-                ", importPrice=" + importPrice +
-                ", exportPrice=" + exportPrice +
-                ", author='" + author + '\'' +
-                ", created=" + created +
-                ", description='" + description + '\'' +
-                '}';
-    }
-
-    @Override
     public void displayData() {
-
+        System.out.printf("%-5s | %10s | %50s | %10s | %10s | %15s | %s \n",
+                getBookId(),
+                getBookName(),
+                getAuthor(),
+                getImportPrice(),
+                getExportPrice(),
+                formattedDate("dd/MM/yyyy",getCreated()),
+                getDescription());
     }
 
     public boolean isValid(String formValid,String object){

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class BookRun implements Serializable{
+public class BookRun {
     public static List<Book> books = new ArrayList<>();
     private static String select;
 

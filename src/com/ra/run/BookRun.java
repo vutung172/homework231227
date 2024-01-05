@@ -66,6 +66,7 @@ public class BookRun {
                 }
             } catch (NumberFormatException nfe) {
                 System.err.println("Kiểu dữ liệu không đúng, chỉ nhập số.");
+                writeData(books);
             }
         } while (true);
 
